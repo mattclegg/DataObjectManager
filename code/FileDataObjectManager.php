@@ -139,11 +139,15 @@ class FileDataObjectManager extends DataObjectManager
 	protected function getImportFolderHierarchy($parentID, $level = 0)
 	{
 		$options = array();		
-		if($children = DataObject::get("Folder", "ParentID = $parentID")) {
+		if($children = DataObject::get("Folder", "\"ParentID\" = $parentID")) {
 			foreach($children as $child) {
 				$indent="";
 				for($i=0;$i<$level;$i++) $indent .= "&nbsp;&nbsp;";
+<<<<<<< HEAD
 				$files = DataObject::get($this->importClass, "\"File\".\"ClassName\" != 'Folder' AND ParentID = $child->ID");
+=======
+				$files = DataObject::get($this->importClass, "\"ClassName\" != 'Folder' AND \"ParentID\" = $child->ID");
+>>>>>>> 8808fda3a4147908e2c1092815f39c988031c8b4
 				$count = $files ? $files->Count() : "0";
 				$options[$this->importLinkFor($child)] = $indent.$child->Title . " <span>($count files)</span>";
 				$options += $this->getImportFolderHierarchy($child->ID, $level+1);
@@ -155,7 +159,7 @@ class FileDataObjectManager extends DataObjectManager
 	protected function getUploadFolderHierarchy($parentID, $level = 0)
 	{
 		$options = array();		
-		if($children = DataObject::get("Folder", "ParentID = $parentID")) {
+		if($children = DataObject::get("Folder", "\"ParentID\" = $parentID")) {
 			foreach($children as $child) {
 				$indent="";
 				for($i=0;$i<$level;$i++) $indent .= "&nbsp;&nbsp;";
@@ -583,6 +587,7 @@ class FileDataObjectManager extends DataObjectManager
 	{
 		$folder_id = isset($_POST['folder_id']) ? $_POST['folder_id'] : $this->importFolderID;;
 		if($files = DataObject::get($this->importClass, \"File\".\"ClassName\" != 'Folder' AND ParentID = $folder_id"))
+
 			$fields = $this->getImportFields();
 			$fields->push(new HiddenField('folder_id','',$folder_id));
 			$fields->push(new LiteralField('select','<div class="select"><span>Select</span>: <a href="javascript:void(0)" rel="all">all</a> | <a href="javascript:void(0)" rel="none">none</a></div>'));

@@ -24,6 +24,7 @@ class ImageAssetManager extends ImageDataObjectManager
     $fields->push(new HiddenField('ID','',$controller->ID));
     
     parent::__construct($controller, $name, $sourceClass, null, $headings, $fields, "\"File\".\"ClassName\" != 'Folder'");
+
   }
 
 }

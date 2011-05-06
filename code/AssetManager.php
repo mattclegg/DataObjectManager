@@ -25,6 +25,7 @@ class AssetManager extends FileDataObjectManager
     $fields->push(new HiddenField('ID','',$controller->ID));
     
     parent::__construct($controller, $name, $sourceClass, null, $headings, $fields, "\"File\".\"ClassName\" != 'Folder'");
+
   }
   
 	function FieldHolder()
