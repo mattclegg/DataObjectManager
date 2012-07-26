@@ -27,5 +27,3 @@ class AssetManagerFolder extends DataObjectDecorator
     return $fields;
   }
 }
-
-?>

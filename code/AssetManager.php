@@ -36,5 +36,3 @@ class AssetManager extends FileDataObjectManager
   
 
 }
-
-?>
