@@ -1,4 +1,4 @@
-<div id="$id" class="RequestHandler FormField DataObjectManager FileDataObjectManager TableListField $NestedType field" href="$CurrentLink">
+<div id="$id" class="RequestHandler FormField DataObjectManager FileDataObjectManager TableListField $NestedType field $extraClass" href="$CurrentLink">
 	<div class="ajax-loader"></div>
 	<div class="dataobjectmanager-actions <% if HasFilter %>filter<% end_if %>">
 		<% if Can(add) %>
