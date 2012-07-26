@@ -610,7 +610,7 @@ class FileDataObjectManager extends DataObjectManager
 	protected function ImportForm($folder_id = null)
 	{
 		$folder_id = isset($_POST['folder_id']) ? $_POST['folder_id'] : $this->importFolderID;;
-		if($files = DataObject::get($this->importClass, "\"ClassName\" != 'Folder' AND ParentID = $folder_id"))
+		if($files = DataObject::get($this->importClass, "\"ClassName\" != 'Folder' AND \"ParentID\" = $folder_id"))
 			$fields = $this->getImportFields();
 			$fields->push(new HiddenField('folder_id','',$folder_id));
 			$fields->push(new LiteralField('select','<div class="select"><span>Select</span>: <a href="javascript:void(0)" rel="all">all</a> | <a href="javascript:void(0)" rel="none">none</a></div>'));
