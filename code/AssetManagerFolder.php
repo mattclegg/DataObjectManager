@@ -15,7 +15,8 @@ class AssetManagerFolder extends DataObjectDecorator
       'Title' => 30,
       'Filename' => 70
     ));
-    $folder_filter = "(\"ClassName\" != 'Folder' AND \"ParentID\" = ".$this->owner->ID.")"; 
+    $folder_filter = "(\"File\".\"ClassName\" AND ParentID = ".$this->owner->ID.")"; 
+
     $filter = $a->sourceFilter ? "({$a->sourceFilter}) AND $folder_filter" : $folder_filter;
     $a->setSourceFilter($filter);
     $a->setParentClass("Folder");
